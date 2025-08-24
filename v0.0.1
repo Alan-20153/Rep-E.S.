@@ -1,0 +1,80 @@
+print("Para dar procedimento ao atendimento digital (v0.0.1), por favor informe seu nome: ")
+    
+A2 = 0
+Error = 1
+while Error == 1:
+    name = input("\nBom dia, qual seria seu nome? ")
+    
+    if name == "":
+        print("\nPor favor, insira um nome válido")
+        Error = 1
+    else:
+        print(f"\nBom dia, {name}\n1-?\n2-Confirmação de idade\n3-Soma infinita\n")
+        Error = 0
+    
+while Error == 0:
+        
+    if A2 == 1:
+        print(f"{name}\n1-?\n2-Confirmação de idade\n3-Soma infinita\n")
+        A2 = 0
+    A1 = 1
+        
+    while A1 == 1:
+        Value = int(input(f"Escolha de 1 a 3 qual seria a atividade desejada: "))
+        
+        
+        if Value == 1:
+            print("\noi\n")
+            A2 = 1
+            print(
+                    "Voltando ao menu de atividades\n"
+                    )
+                
+        elif Value == 2:
+            age = int(input("\nPor favor, informe sua idade: "))
+            if age >= 18:
+                print(
+                    f"\n{name},a idade fornecida ({age} anos) concede a você a permissão para adquirir a CNH e também não só o direito como também a obrigação ao voto.\n"
+                    )
+                print(
+                    "Voltando ao menu de atividades\n"
+                    )
+                A2 = 1
+                
+            elif age >= 16 < 18:
+                print(
+                    f"\n{name},a idade fornecida ({age} anos) concede a você a opção de voto, mas não lhe permite adquirir a CNH."
+                )
+                A2 = 1
+                
+            elif age > 16:
+                print(
+                    f"{name},a idade inserida ({age} anos) não lhe permite adquirir a CNH e nem a opção e/ou obrigação de votar."
+                )
+                A2 = 1
+                
+            else:
+                print("Por favor, insira uma idade válida.")
+                
+        elif Value == 3:
+            valueA = 0
+            while valueA >= 0:
+                print(f"{valueA}")
+                valueA += 1
+                if valueA == 20000:
+                    answer1 = int(input(f"1 para continuar e 2 parar?"))
+                    if answer1 == 1:
+                        continue
+                    elif answer1 == 2:
+                        break
+                    else:
+                        print("\nPor favor, insira uma resposta válido!")
+                    
+                else:
+                    continue
+                  
+        elif Value == "":
+            print("\nPor favor, insira um valor válido!\n")
+        
+        else:
+            print("\nPor favor, insira um valor válido!\n")
