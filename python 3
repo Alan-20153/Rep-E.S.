@@ -1,80 +1,156 @@
-print("Para dar procedimento ao atendimento digital (v0.0.1), por favor informe seu nome: ")
-    
+print("Bom dia, seja bem-vindo(a) ao SALPdPP (Sistema de Atividades de Linguagem Python do Primeiro Período)\n")
+from datetime import date, datetime
+
+
+A1 = 1
 A2 = 0
-Error = 1
-while Error == 1:
-    name = input("\nBom dia, qual seria seu nome? ")
+A3 = 0
+A4 = 0
+A5 = 0
+A6 = 0
+A7 = 0
+A8 = 0
+A9 = 0
+
+
+while A1 == 1:
+    Nome = input("Por favor, diga seu nome: ")
+    if Nome.strip() == "":
+        print("Por favor, insira um nome válido.\n")
+        A1 = 1
     
-    if name == "":
-        print("\nPor favor, insira um nome válido")
-        Error = 1
+    elif not Nome.isalpha():
+        print("Por favor, utilize apenas letras.\n")
+        A1 = 1
+        
     else:
-        print(f"\nBom dia, {name}\n1-?\n2-Confirmação de idade\n3-Soma infinita\n")
-        Error = 0
-    
-while Error == 0:
-        
-    if A2 == 1:
-        print(f"{name}\n1-?\n2-Confirmação de idade\n3-Soma infinita\n")
-        A2 = 0
-    A1 = 1
-        
-    while A1 == 1:
-        Value = int(input(f"Escolha de 1 a 3 qual seria a atividade desejada: "))
-        
-        
-        if Value == 1:
-            print("\noi\n")
-            A2 = 1
-            print(
-                    "Voltando ao menu de atividades\n"
-                    )
-                
-        elif Value == 2:
-            age = int(input("\nPor favor, informe sua idade: "))
-            if age >= 18:
-                print(
-                    f"\n{name},a idade fornecida ({age} anos) concede a você a permissão para adquirir a CNH e também não só o direito como também a obrigação ao voto.\n"
-                    )
-                print(
-                    "Voltando ao menu de atividades\n"
-                    )
-                A2 = 1
-                
-            elif age >= 16 < 18:
-                print(
-                    f"\n{name},a idade fornecida ({age} anos) concede a você a opção de voto, mas não lhe permite adquirir a CNH."
-                )
-                A2 = 1
-                
-            elif age > 16:
-                print(
-                    f"{name},a idade inserida ({age} anos) não lhe permite adquirir a CNH e nem a opção e/ou obrigação de votar."
-                )
-                A2 = 1
-                
-            else:
-                print("Por favor, insira uma idade válida.")
-                
-        elif Value == 3:
-            valueA = 0
-            while valueA >= 0:
-                print(f"{valueA}")
-                valueA += 1
-                if valueA == 20000:
-                    answer1 = int(input(f"1 para continuar e 2 parar?"))
-                    if answer1 == 1:
-                        continue
-                    elif answer1 == 2:
-                        break
-                    else:
-                        print("\nPor favor, insira uma resposta válido!")
+        print(f"\nSeja bem-vindo(a), {Nome}.\n")
+        A1 = 0
+        A2 = 1
+
+print(f"Por favor, {Nome} escolha uma opção:\n")
+while A2 == 1:
+    Atividades = input("1-Habilitação e CNH.\n2-Verificação de número ímpar ou par.\n3-Qual o maior número.\n4-Minha média.\n5-Loop for.\n6-Tabuada.\n\nEu desejo a opção: ")
+    if Atividades.isdigit():
+        Atividades = int(Atividades)
+        if Atividades in [1, 2, 3, 4, 5, 6, 7, 8]:
+            
+            
+            if Atividades == 1:
+                A3 = 1
+                while A3 == 1:
+                    try:
+                        datanascimento = input("\nQual a sua data de nascimento?\n(ex:01/01/2001)\n\nEu nasci em: ")
+                        nascimento = datetime.strptime(datanascimento, "%d/%m/%Y").date()
                     
-                else:
-                    continue
-                  
-        elif Value == "":
-            print("\nPor favor, insira um valor válido!\n")
-        
-        else:
-            print("\nPor favor, insira um valor válido!\n")
+                        hoje = date.today()
+                        Idade = hoje.year - nascimento.year
+                    
+                        if (hoje.month, hoje.day) < (nascimento.month, nascimento.day):
+                            Idade -= 1
+                            
+                        if Idade >= 18:
+                            print(f"\n{Nome}, você é maior de idade ({Idade}), portanto pode tirar a CNH, você também possui a OBRIGAÇÃO de votar\n")
+                            print("\nVoltando ao menu principal.\n")
+                            A3 = 0
+                                
+                        elif Idade in [16, 17]:
+                            print(f"\n{Nome}, você é menor de idade ({Idade}), portanto não pode tirar CNH, mas tem a OPÇÃO de votar, tirando o título de eleitor.")
+                            print("\nVoltando ao menu principal.\n")
+                            A3 = 0
+                                
+                        else:
+                            print(f"{Nome}, você é menor de idade ({Idade}) e não pode tirar CNH e/ou título de eleitor.")
+                            print("\nVoltando ao menu principal.\n")
+                            A3 = 0
+                        
+                        
+                    except:
+                        print("\nPor favor, siga o exemplo mostrado.\n")
+                        
+                        
+            elif Atividades == 2:
+                A4 = 1
+                while A4 == 1:
+                    Par = input("\nQual seria o número inteiro desejado? ")
+                    if Par.isdigit():
+                        Par = int(Par)
+                        if Par %2 == 0:
+                            print("\nÉ par.\n")
+                            A4 = 0
+                            
+                        else:
+                            print("\nÉ ímpar.\n")
+                            A4 = 0
+                    else:
+                        print("Por favor, insira um número inteiro válido.\n")
+                        
+                        
+            elif Atividades == 3:
+                A5 = 1
+                while A5 == 1:
+                    n1 = input("Digite o 1º número: ")
+                    n2 = input("\nDigite o 2º número: ")
+                    n3 = input("\nDigite o 3º número: ")
+                    
+                    if n1.isdigit() and n2.isdigit() and n3.isdigit():
+                        n1 = int(n1)
+                        n2 = int(n2)
+                        n3 = int(n3)
+                        
+                        print(f"\nOs números escolhidos foram: {n1}, {n2} e {n3}.")
+                        maior = max(n1, n2, n3)
+                        
+                        print(f"\nO maior número entre {n1}, {n2} e {n3} é: {maior}.")
+                        A5 = 0
+                        
+                        
+                    else:
+                        print(f"\nPor favor, {Nome} insira números válidos.\n")
+                        
+            elif Atividades == 4:
+                A6 = 1
+                while A6 == 1:
+                    try:
+                        nota1 = float(input("\nMinha nota na 1º prova foi de: "))
+                        nota2 = float(input("\nMinha nota na 2º prova foi de: "))
+                        
+                        if 0 <= nota1 <= 10 and 0 <= nota2 <= 10:
+                            somaNota = nota1 + nota2
+                            MédiaNota = somaNota / 2
+                            
+                            if MédiaNota >= 6:
+                                print(f"\nParabéns, {Nome} você está aprovado!\n")
+                                A6 = 0
+                            elif 4 <= MédiaNota < 6:
+                                print(f"\nParabéns, {Nome} você está aprovado, mas com nota média ({MédiaNota}), cuidado.\n")
+                                A6 = 0
+                            else:
+                                print(f"\nSinto muito, {Nome} você está reprovado.\n")
+                                A6 = 0
+                        else:
+                            print("\nPor favor, insira notas válidas (0-10).")
+                    except:
+                        print("\nPor favor, insira notas válidas (0-10).")
+            elif Atividades == 5:
+                A7 = 1
+                while A7 == 1:
+                    for i in range(11):
+                        print(f"Número atual do for: {i}")
+                    
+                    resp1 = input("\nParar ou continuar?\n\nR:").lower()
+                    if resp1 == "parar":
+                        print("\nVoltando ao menu principal.\n")
+                        A7 = 0
+                    elif resp1 == "continuar":
+                        continue
+                    
+                    else:
+                        print("\nPor favor, escreva somente uma das opções.\n")
+                        
+            elif Atividades == 6:
+                A8 = 1
+                while A8 == 1:
+                    
+    else:
+        print(f"\nPor favor, {Nome} escolha uma opção válida.\n")
